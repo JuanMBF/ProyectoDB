@@ -1,0 +1,33 @@
+[project]
+name = "preciosdb"
+version = "1.0.0"
+description = "Scraper de precios de supermercados argentinos (Coto, Día y Carrefour) con MySQL, MongoDB y SQL analítico."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Juan Barros" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers -m 'not integration'"
+markers = ["integration: necesita MySQL y MongoDB reales (ver docker-compose.yml)"]
+filterwarnings = ["error"]
+
+[tool.coverage.run]
+source = ["preciosdb"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = ["migrations/versions"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP", "SIM", "C4", "DTZ", "RUF", "N", "PTH", "RET"]
+ignore = ["RUF001", "RUF002", "RUF003"]  # Spanish text legitimately uses accented characters
+
+[tool.ruff.lint.isort]
+known-first-party = ["preciosdb"]

@@ -1,0 +1,95 @@
+# MySQL 8.4 (modelo relacional) + MongoDB 7 en replica set de 3 nodos (zona raw) + la aplicación.
+#
+#   docker compose up -d                          # bases de datos (y arma el replica set)
+#   docker compose run --rm app migrate           # tablas y vistas
+#   docker compose run --rm app demo              # datos de ejemplo, sin conexión
+#   docker compose run --rm app scrape --term leche
+#   docker compose run --rm --build test          # tests de integración contra MySQL y MongoDB
+
+x-mongo-node: &mongo-node
+  image: mongo:7.0
+  command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
+  healthcheck:
+    test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+    interval: 5s
+    timeout: 5s
+    retries: 20
+
+x-app-env: &app-env
+  DATABASE_URL: mysql+pymysql://precios:precios@mysql:3306/precios?charset=utf8mb4
+  MONGO_URL: mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rs0
+  MONGO_DATABASE: preciosdb
+
+x-app-deps: &app-deps
+  mysql: { condition: service_healthy }
+  mongo-init: { condition: service_completed_successfully }
+
+services:
+  mysql:
+    image: mysql:8.4
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_0900_ai_ci"]
+    environment:
+      MYSQL_DATABASE: precios
+      MYSQL_USER: precios
+      MYSQL_PASSWORD: precios
+      MYSQL_ROOT_PASSWORD: root
+    ports: ["3306:3306"]
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # Por TCP: durante la inicialización MySQL arranca un servidor temporal sin red.
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uprecios", "-pprecios", "--silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  mongo1:
+    <<: *mongo-node
+    hostname: mongo1
+    ports: ["27017:27017"]
+    volumes: ["mongo1-data:/data/db"]
+
+  mongo2:
+    <<: *mongo-node
+    hostname: mongo2
+    ports: ["27018:27017"]
+    volumes: ["mongo2-data:/data/db"]
+
+  mongo3:
+    <<: *mongo-node
+    hostname: mongo3
+    ports: ["27019:27017"]
+    volumes: ["mongo3-data:/data/db"]
+
+  # Inicia el replica set una sola vez (si ya existe, no hace nada) y termina.
+  mongo-init:
+    image: mongo:7.0
+    depends_on:
+      mongo1: { condition: service_healthy }
+      mongo2: { condition: service_healthy }
+      mongo3: { condition: service_healthy }
+    volumes: ["./docker/mongo/init-replica-set.js:/init-replica-set.js:ro"]
+    entrypoint: ["mongosh", "--host", "mongo1:27017", "--quiet", "/init-replica-set.js"]
+    restart: "no"
+
+  app:
+    build: { context: ., target: app }
+    profiles: ["app"]
+    environment: *app-env
+    depends_on: *app-deps
+
+  test:
+    build: { context: ., target: test }
+    profiles: ["test"]
+    environment:
+      <<: *app-env
+      DATABASE_URL: mysql+pymysql://precios:precios@mysql:3306/precios_test?charset=utf8mb4
+      MONGO_DATABASE: preciosdb_test
+    depends_on: *app-deps
+
+volumes:
+  mysql-data:
+  mongo1-data:
+  mongo2-data:
+  mongo3-data:

@@ -1,0 +1,287 @@
+[
+ {
+  "productId": "395999",
+  "productName": "Leche Larga Vida Clásica 3% La Serenisima 1 Lt.",
+  "brand": "LA SERENISIMA",
+  "linkText": "leche-larga-vida-clásica-3-la-serenisima-1-lt",
+  "link": "https://diaonline.supermercadosdia.com.ar/leche-larga-vida-clasica-3--la-serenisima-1-lt-295999/p",
+  "categories": [
+   "/Frescos/Lácteos/Leches/",
+   "/Frescos/Lácteos/",
+   "/Frescos/"
+  ],
+  "items": [
+   {
+    "itemId": "295999",
+    "name": "Leche Larga Vida Clásica 3% La Serenisima 1 Lt.",
+    "nameComplete": "Leche Larga Vida Clásica 3% La Serenisima 1 Lt.",
+    "ean": "7790742363008",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [
+     {
+      "imageId": "1",
+      "imageUrl": "https://ardiaprod.vteximg.com.br/arquivos/ids/343644/Leche-Larga-Vida-Clasica-3--La-Serenisima-1-Lt-_1.jpg?v=638882737968930000"
+     }
+    ],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Supermercados DIA",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 2915.0,
+       "ListPrice": 2915.0,
+       "PriceWithoutDiscount": 2915.0,
+       "FullSellingPrice": 2915.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "116583",
+  "productName": "Manteca La Serenísima 200 Gr.",
+  "brand": "LA SERENISIMA",
+  "linkText": "manteca-la-serenísima-200-gr",
+  "link": "https://diaonline.supermercadosdia.com.ar/manteca-la-serenísima-200-gr/p",
+  "categories": [
+   "/Frescos/Lácteos/Mantecas/",
+   "/Frescos/Lácteos/",
+   "/Frescos/"
+  ],
+  "items": [
+   {
+    "itemId": "16583",
+    "name": "Manteca La Serenísima 200 Gr.",
+    "nameComplete": "Manteca La Serenísima 200 Gr.",
+    "ean": "7793940054006",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Supermercados DIA",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 3750.0,
+       "ListPrice": 5010.0,
+       "PriceWithoutDiscount": 3750.0,
+       "FullSellingPrice": 3750.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "131110",
+  "productName": "Yerba Mate Taragüi Con Palo 1 Kg.",
+  "brand": "TARAGUI",
+  "linkText": "yerba-mate-taragüi-con-palo-1-kg",
+  "link": "https://diaonline.supermercadosdia.com.ar/yerba-mate-taragüi-con-palo-1-kg/p",
+  "categories": [
+   "/Almacén/Infusiones/Yerbas/",
+   "/Almacén/Infusiones/",
+   "/Almacén/"
+  ],
+  "items": [
+   {
+    "itemId": "31110",
+    "name": "Yerba Mate Taragüi Con Palo 1 Kg.",
+    "nameComplete": "Yerba Mate Taragüi Con Palo 1 Kg.",
+    "ean": "7790387120349",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Supermercados DIA",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 5150.0,
+       "ListPrice": 5150.0,
+       "PriceWithoutDiscount": 5150.0,
+       "FullSellingPrice": 5150.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "158402",
+  "productName": "Aceite de Girasol Natura 1,5 Lt.",
+  "brand": "NATURA",
+  "linkText": "aceite-de-girasol-natura-15-lt",
+  "link": "https://diaonline.supermercadosdia.com.ar/aceite-de-girasol-natura-15-lt/p",
+  "categories": [
+   "/Almacén/Aceites y aderezos/Aceites/",
+   "/Almacén/Aceites y aderezos/",
+   "/Almacén/"
+  ],
+  "items": [
+   {
+    "itemId": "58402",
+    "name": "Aceite de Girasol Natura 1,5 Lt.",
+    "nameComplete": "Aceite de Girasol Natura 1,5 Lt.",
+    "ean": "7790272001029",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Supermercados DIA",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 6250.0,
+       "ListPrice": 6250.0,
+       "PriceWithoutDiscount": 6250.0,
+       "FullSellingPrice": 6250.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "127719",
+  "productName": "Dulce de Leche Clásico La Serenísima 400 Gr.",
+  "brand": "LA SERENISIMA",
+  "linkText": "dulce-de-leche-clásico-la-serenísima-400-gr",
+  "link": "https://diaonline.supermercadosdia.com.ar/dulce-de-leche-clásico-la-serenísima-400-gr/p",
+  "categories": [
+   "/Frescos/Lácteos/Dulce de leche/",
+   "/Frescos/Lácteos/",
+   "/Frescos/"
+  ],
+  "items": [
+   {
+    "itemId": "27719",
+    "name": "Dulce de Leche Clásico La Serenísima 400 Gr.",
+    "nameComplete": "Dulce de Leche Clásico La Serenísima 400 Gr.",
+    "ean": "7790742625205",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Supermercados DIA",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 3350.0,
+       "ListPrice": 3350.0,
+       "PriceWithoutDiscount": 3350.0,
+       "FullSellingPrice": 3350.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "101532",
+  "productName": "Gaseosa Coca-Cola Sabor Original 2,25 Lt.",
+  "brand": "COCA COLA",
+  "linkText": "gaseosa-coca-cola-sabor-original-225-lt",
+  "link": "https://diaonline.supermercadosdia.com.ar/gaseosa-coca-cola-sabor-original-225-lt/p",
+  "categories": [
+   "/Bebidas/Gaseosas/Colas/",
+   "/Bebidas/Gaseosas/",
+   "/Bebidas/"
+  ],
+  "items": [
+   {
+    "itemId": "1532",
+    "name": "Gaseosa Coca-Cola Sabor Original 2,25 Lt.",
+    "nameComplete": "Gaseosa Coca-Cola Sabor Original 2,25 Lt.",
+    "ean": "7790895000997",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Supermercados DIA",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 4590.0,
+       "ListPrice": 4590.0,
+       "PriceWithoutDiscount": 4590.0,
+       "FullSellingPrice": 4590.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "370114",
+  "productName": "Leche Descremada DIA 1 Lt.",
+  "brand": "DIA",
+  "linkText": "leche-descremada-dia-1-lt",
+  "link": "https://diaonline.supermercadosdia.com.ar/leche-descremada-dia-1-lt/p",
+  "categories": [
+   "/Frescos/Lácteos/Leches/",
+   "/Frescos/Lácteos/",
+   "/Frescos/"
+  ],
+  "items": [
+   {
+    "itemId": "270114",
+    "name": "Leche Descremada DIA 1 Lt.",
+    "nameComplete": "Leche Descremada DIA 1 Lt.",
+    "ean": "",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Supermercados DIA",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 1450.0,
+       "ListPrice": 1450.0,
+       "PriceWithoutDiscount": 1450.0,
+       "FullSellingPrice": 1450.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ }
+]

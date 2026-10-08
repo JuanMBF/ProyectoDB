@@ -1,0 +1,14 @@
+# Scraping
+requests>=2.31
+
+# Base relacional (MySQL en producción, SQLite para desarrollo y tests)
+sqlalchemy>=2.0.30,<3.0
+alembic>=1.13
+pymysql>=1.1
+cryptography>=42  # PyMySQL la necesita para el login caching_sha2_password de MySQL 8
+
+# Zona raw (MongoDB)
+pymongo>=4.8,<5
+
+# Configuración
+pydantic-settings>=2.3

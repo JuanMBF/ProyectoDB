@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Lint y tests (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements*.txt
+
+      - name: Instalar dependencias
+        run: pip install -r requirements-dev.txt
+
+      - name: Lint (ruff)
+        run: |
+          ruff check .
+          ruff format --check .
+
+      - name: Migraciones al día con los modelos (SQLite)
+        run: |
+          alembic upgrade head
+          alembic check
+
+      - name: Tests con cobertura
+        run: pytest --cov --cov-report=term-missing
+
+  integration:
+    name: MySQL 8.4 + MongoDB replica set
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Levantar MySQL y el replica set de 3 nodos
+        run: docker compose up -d
+
+      - name: Tests de integración (mismos resultados en MySQL y SQLite)
+        run: docker compose run --rm --build test
+
+      - name: Punta a punta con la CLI
+        run: |
+          docker compose run --rm --build app migrate
+          docker compose run --rm app demo
+          docker compose run --rm app compare leche
+          docker compose run --rm app sql 01_canasta_comparable
+          docker compose run --rm app branches 7790742363008
+
+      - name: Caída del primario de MongoDB mientras la app escribe
+        run: |
+          docker compose kill mongo1
+          docker compose run --rm --no-deps app demo
+          docker compose run --rm --no-deps app raw-stats
+          docker compose up -d mongo1
+
+      - name: Logs si algo falla
+        if: failure()
+        run: docker compose logs
+
+      - name: Apagar
+        if: always()
+        run: docker compose down -v

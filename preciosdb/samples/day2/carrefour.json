@@ -1,0 +1,247 @@
+[
+ {
+  "productId": "244373",
+  "productName": "Leche La serenisima clásica 3% 1L",
+  "brand": "La Serenísima",
+  "linkText": "leche-la-serenisima-clásica-3-1l",
+  "link": "https://www.carrefour.com.ar/leche-la-serenisima-clasica-3-1l-720719/p",
+  "categories": [
+   "/Frescos/Lácteos/Leches/",
+   "/Frescos/Lácteos/",
+   "/Frescos/"
+  ],
+  "items": [
+   {
+    "itemId": "144373",
+    "name": "Leche La serenisima clásica 3% 1L",
+    "nameComplete": "Leche La serenisima clásica 3% 1L",
+    "ean": "7790742363008",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [
+     {
+      "imageId": "1",
+      "imageUrl": "https://carrefourar.vteximg.com.br/arquivos/ids/636141/7790742363008_01.jpg.jpg?v=638780812788100000"
+     }
+    ],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Carrefour",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 2915.0,
+       "ListPrice": 2915.0,
+       "PriceWithoutDiscount": 2915.0,
+       "FullSellingPrice": 2915.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "151218",
+  "productName": "Manteca La Serenísima 200 g",
+  "brand": "La Serenísima",
+  "linkText": "manteca-la-serenísima-200-g",
+  "link": "https://www.carrefour.com.ar/manteca-la-serenísima-200-g/p",
+  "categories": [
+   "/Frescos/Lácteos/Mantecas/",
+   "/Frescos/Lácteos/",
+   "/Frescos/"
+  ],
+  "items": [
+   {
+    "itemId": "51218",
+    "name": "Manteca La Serenísima 200 g",
+    "nameComplete": "Manteca La Serenísima 200 g",
+    "ean": "7793940054006",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Carrefour",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 4990.0,
+       "ListPrice": 4990.0,
+       "PriceWithoutDiscount": 4990.0,
+       "FullSellingPrice": 4990.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "120633",
+  "productName": "Yerba mate Taragüi con palo 1 kg",
+  "brand": "Taragüi",
+  "linkText": "yerba-mate-taragüi-con-palo-1-kg",
+  "link": "https://www.carrefour.com.ar/yerba-mate-taragüi-con-palo-1-kg/p",
+  "categories": [
+   "/Almacén/Infusiones/Yerbas/",
+   "/Almacén/Infusiones/",
+   "/Almacén/"
+  ],
+  "items": [
+   {
+    "itemId": "20633",
+    "name": "Yerba mate Taragüi con palo 1 kg",
+    "nameComplete": "Yerba mate Taragüi con palo 1 kg",
+    "ean": "7790387120349",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Carrefour",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 5590.0,
+       "ListPrice": 5590.0,
+       "PriceWithoutDiscount": 5590.0,
+       "FullSellingPrice": 5590.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "131792",
+  "productName": "Aceite de girasol Natura 1,5 L",
+  "brand": "Natura",
+  "linkText": "aceite-de-girasol-natura-15-l",
+  "link": "https://www.carrefour.com.ar/aceite-de-girasol-natura-15-l/p",
+  "categories": [
+   "/Almacén/Aceites y aderezos/Aceites/",
+   "/Almacén/Aceites y aderezos/",
+   "/Almacén/"
+  ],
+  "items": [
+   {
+    "itemId": "31792",
+    "name": "Aceite de girasol Natura 1,5 L",
+    "nameComplete": "Aceite de girasol Natura 1,5 L",
+    "ean": "7790272001029",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Carrefour",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 0.0,
+       "ListPrice": 0.0,
+       "PriceWithoutDiscount": 0.0,
+       "FullSellingPrice": 0.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 0,
+       "IsAvailable": false
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "166105",
+  "productName": "Dulce de leche La Serenísima clásico 400 g",
+  "brand": "La Serenísima",
+  "linkText": "dulce-de-leche-la-serenísima-clásico-400-g",
+  "link": "https://www.carrefour.com.ar/dulce-de-leche-la-serenísima-clásico-400-g/p",
+  "categories": [
+   "/Frescos/Lácteos/Dulce de leche/",
+   "/Frescos/Lácteos/",
+   "/Frescos/"
+  ],
+  "items": [
+   {
+    "itemId": "66105",
+    "name": "Dulce de leche La Serenísima clásico 400 g",
+    "nameComplete": "Dulce de leche La Serenísima clásico 400 g",
+    "ean": "7790742625205",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Carrefour",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 3399.0,
+       "ListPrice": 3399.0,
+       "PriceWithoutDiscount": 3399.0,
+       "FullSellingPrice": 3399.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "productId": "108411",
+  "productName": "Gaseosa cola Coca-Cola sabor original 2,25 L",
+  "brand": "Coca-Cola",
+  "linkText": "gaseosa-cola-coca-cola-sabor-original-225-l",
+  "link": "https://www.carrefour.com.ar/gaseosa-cola-coca-cola-sabor-original-225-l/p",
+  "categories": [
+   "/Bebidas/Gaseosas/Colas/",
+   "/Bebidas/Gaseosas/",
+   "/Bebidas/"
+  ],
+  "items": [
+   {
+    "itemId": "8411",
+    "name": "Gaseosa cola Coca-Cola sabor original 2,25 L",
+    "nameComplete": "Gaseosa cola Coca-Cola sabor original 2,25 L",
+    "ean": "7790895000997",
+    "measurementUnit": "un",
+    "unitMultiplier": 1.0,
+    "images": [],
+    "sellers": [
+     {
+      "sellerId": "1",
+      "sellerName": "Carrefour",
+      "sellerDefault": true,
+      "commertialOffer": {
+       "Price": 4750.0,
+       "ListPrice": 4750.0,
+       "PriceWithoutDiscount": 4750.0,
+       "FullSellingPrice": 4750.0,
+       "Tax": 0.0,
+       "PriceValidUntil": "2027-10-08T00:00:00Z",
+       "AvailableQuantity": 250,
+       "IsAvailable": true
+      }
+     }
+    ]
+   }
+  ]
+ }
+]

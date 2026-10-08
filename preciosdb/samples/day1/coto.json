@@ -1,0 +1,527 @@
+{
+ "response": {
+  "results": [
+   {
+    "value": "Leche Larga Vida Entera Ua Clasica 3% LA SERENISIMA 1l",
+    "data": {
+     "id": "prod00251875",
+     "sku_plu": 251875,
+     "sku_display_name": "Leche Larga Vida Entera Ua Clasica 3% LA SERENISIMA 1l",
+     "product_brand": "LA SERENISIMA",
+     "product_main_ean": 7790742363008,
+     "product_list_price": 2915,
+     "product_format": "Litro",
+     "product_format_quantity": 1,
+     "product_unit_of_measure": "UNI",
+     "url": "_/R-00251875-00251875-200",
+     "product_large_image_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00251800/00251875.jpg",
+     "groups": [
+      {
+       "group_id": "catv00000596",
+       "display_name": "Leches",
+       "path_list": [
+        {
+         "id": "catv00000001",
+         "display_name": "Frescos"
+        },
+        {
+         "id": "catv00000002",
+         "display_name": "Lácteos"
+        }
+       ]
+      }
+     ],
+     "price": [
+      {
+       "id": "pl160_00251875",
+       "store": "160",
+       "listPrice": 2915,
+       "priceList": "priceList160",
+       "formatPrice": 2915,
+       "priceWithoutTax": 2409.09
+      },
+      {
+       "id": "pl109_00251875",
+       "store": "109",
+       "listPrice": 2915,
+       "priceList": "priceList109",
+       "formatPrice": 2915,
+       "priceWithoutTax": 2409.09
+      },
+      {
+       "id": "pl061_00251875",
+       "store": "061",
+       "listPrice": 2750,
+       "priceList": "priceList061",
+       "formatPrice": 2750,
+       "priceWithoutTax": 2272.73
+      },
+      {
+       "id": "pl219_00251875",
+       "store": "219",
+       "listPrice": 2915,
+       "priceList": "priceList219",
+       "formatPrice": 2915,
+       "priceWithoutTax": 2409.09
+      },
+      {
+       "id": "pl091_00251875",
+       "store": "091",
+       "listPrice": 3035,
+       "priceList": "priceList091",
+       "formatPrice": 3035,
+       "priceWithoutTax": 2508.26
+      }
+     ],
+     "discounts": [
+      {
+       "id": "38271998",
+       "comments": "No acumulable con otras promos",
+       "takingText": "Llevando 2",
+       "discountText": "50% 2da",
+       "regularPrice": null,
+       "discountImage": null,
+       "discountPrice": "$2186.25",
+       "regularPriceText": "Precio Contado: $2915"
+      }
+     ]
+    }
+   },
+   {
+    "value": "Manteca Clasica LA SERENISIMA 200gr",
+    "data": {
+     "id": "prod00310221",
+     "sku_plu": 310221,
+     "sku_display_name": "Manteca Clasica LA SERENISIMA 200gr",
+     "product_brand": "LA SERENISIMA",
+     "product_main_ean": 7793940054006,
+     "product_list_price": 4649,
+     "product_format": "Kilo",
+     "product_format_quantity": 0.2,
+     "product_unit_of_measure": "UNI",
+     "url": "_/R-00310221-00310221-200",
+     "product_large_image_url": null,
+     "groups": [
+      {
+       "group_id": "catv00000812",
+       "display_name": "Mantecas",
+       "path_list": [
+        {
+         "id": "catv00000001",
+         "display_name": "Frescos"
+        },
+        {
+         "id": "catv00000002",
+         "display_name": "Lácteos"
+        }
+       ]
+      }
+     ],
+     "price": [
+      {
+       "id": "pl160_00310221",
+       "store": "160",
+       "listPrice": 4649,
+       "priceList": "priceList160",
+       "formatPrice": 4649,
+       "priceWithoutTax": 3842.15
+      },
+      {
+       "id": "pl109_00310221",
+       "store": "109",
+       "listPrice": 4649,
+       "priceList": "priceList109",
+       "formatPrice": 4649,
+       "priceWithoutTax": 3842.15
+      },
+      {
+       "id": "pl061_00310221",
+       "store": "061",
+       "listPrice": 4484,
+       "priceList": "priceList061",
+       "formatPrice": 4484,
+       "priceWithoutTax": 3705.79
+      },
+      {
+       "id": "pl219_00310221",
+       "store": "219",
+       "listPrice": 4649,
+       "priceList": "priceList219",
+       "formatPrice": 4649,
+       "priceWithoutTax": 3842.15
+      },
+      {
+       "id": "pl091_00310221",
+       "store": "091",
+       "listPrice": 4769,
+       "priceList": "priceList091",
+       "formatPrice": 4769,
+       "priceWithoutTax": 3941.32
+      }
+     ],
+     "discounts": [
+      {
+       "id": "38271998",
+       "comments": "No acumulable con otras promos",
+       "takingText": null,
+       "discountText": "25%Dto",
+       "regularPrice": null,
+       "discountImage": null,
+       "discountPrice": "$3486.75",
+       "regularPriceText": "Precio Contado: $4649"
+      }
+     ]
+    }
+   },
+   {
+    "value": "Yerba Mate Con Palo TARAGUI 1kg",
+    "data": {
+     "id": "prod00017412",
+     "sku_plu": 17412,
+     "sku_display_name": "Yerba Mate Con Palo TARAGUI 1kg",
+     "product_brand": "TARAGUI",
+     "product_main_ean": 7790387120349,
+     "product_list_price": 5299,
+     "product_format": "Kilo",
+     "product_format_quantity": 1,
+     "product_unit_of_measure": "UNI",
+     "url": "_/R-00017412-00017412-200",
+     "product_large_image_url": null,
+     "groups": [
+      {
+       "group_id": "catv00000614",
+       "display_name": "Yerbas",
+       "path_list": [
+        {
+         "id": "catv00000001",
+         "display_name": "Almacén"
+        },
+        {
+         "id": "catv00000002",
+         "display_name": "Infusiones"
+        }
+       ]
+      }
+     ],
+     "price": [
+      {
+       "id": "pl160_00017412",
+       "store": "160",
+       "listPrice": 5299,
+       "priceList": "priceList160",
+       "formatPrice": 5299,
+       "priceWithoutTax": 4379.34
+      },
+      {
+       "id": "pl109_00017412",
+       "store": "109",
+       "listPrice": 5299,
+       "priceList": "priceList109",
+       "formatPrice": 5299,
+       "priceWithoutTax": 4379.34
+      },
+      {
+       "id": "pl061_00017412",
+       "store": "061",
+       "listPrice": 5134,
+       "priceList": "priceList061",
+       "formatPrice": 5134,
+       "priceWithoutTax": 4242.98
+      },
+      {
+       "id": "pl219_00017412",
+       "store": "219",
+       "listPrice": 5299,
+       "priceList": "priceList219",
+       "formatPrice": 5299,
+       "priceWithoutTax": 4379.34
+      },
+      {
+       "id": "pl091_00017412",
+       "store": "091",
+       "listPrice": 5419,
+       "priceList": "priceList091",
+       "formatPrice": 5419,
+       "priceWithoutTax": 4478.51
+      }
+     ],
+     "discounts": []
+    }
+   },
+   {
+    "value": "Aceite De Girasol NATURA 1.5l",
+    "data": {
+     "id": "prod00208573",
+     "sku_plu": 208573,
+     "sku_display_name": "Aceite De Girasol NATURA 1.5l",
+     "product_brand": "NATURA",
+     "product_main_ean": 7790272001029,
+     "product_list_price": 5999,
+     "product_format": "Litro",
+     "product_format_quantity": 1.5,
+     "product_unit_of_measure": "UNI",
+     "url": "_/R-00208573-00208573-200",
+     "product_large_image_url": null,
+     "groups": [
+      {
+       "group_id": "catv00000702",
+       "display_name": "Aceites",
+       "path_list": [
+        {
+         "id": "catv00000001",
+         "display_name": "Almacén"
+        },
+        {
+         "id": "catv00000002",
+         "display_name": "Aceites y aderezos"
+        }
+       ]
+      }
+     ],
+     "price": [
+      {
+       "id": "pl160_00208573",
+       "store": "160",
+       "listPrice": 5999,
+       "priceList": "priceList160",
+       "formatPrice": 5999,
+       "priceWithoutTax": 4957.85
+      },
+      {
+       "id": "pl109_00208573",
+       "store": "109",
+       "listPrice": 5999,
+       "priceList": "priceList109",
+       "formatPrice": 5999,
+       "priceWithoutTax": 4957.85
+      },
+      {
+       "id": "pl061_00208573",
+       "store": "061",
+       "listPrice": 5834,
+       "priceList": "priceList061",
+       "formatPrice": 5834,
+       "priceWithoutTax": 4821.49
+      },
+      {
+       "id": "pl219_00208573",
+       "store": "219",
+       "listPrice": 5999,
+       "priceList": "priceList219",
+       "formatPrice": 5999,
+       "priceWithoutTax": 4957.85
+      },
+      {
+       "id": "pl091_00208573",
+       "store": "091",
+       "listPrice": 6119,
+       "priceList": "priceList091",
+       "formatPrice": 6119,
+       "priceWithoutTax": 5057.02
+      }
+     ],
+     "discounts": []
+    }
+   },
+   {
+    "value": "Dulce De Leche Clasico LA SERENISIMA 400gr",
+    "data": {
+     "id": "prod00420310",
+     "sku_plu": 420310,
+     "sku_display_name": "Dulce De Leche Clasico LA SERENISIMA 400gr",
+     "product_brand": "LA SERENISIMA",
+     "product_main_ean": 7790742625205,
+     "product_list_price": 3290,
+     "product_format": "Kilo",
+     "product_format_quantity": 0.4,
+     "product_unit_of_measure": "UNI",
+     "url": "_/R-00420310-00420310-200",
+     "product_large_image_url": null,
+     "groups": [
+      {
+       "group_id": "catv00001271",
+       "display_name": "Dulce de leche",
+       "path_list": [
+        {
+         "id": "catv00000001",
+         "display_name": "Frescos"
+        },
+        {
+         "id": "catv00000002",
+         "display_name": "Lácteos"
+        }
+       ]
+      }
+     ],
+     "price": [
+      {
+       "id": "pl160_00420310",
+       "store": "160",
+       "listPrice": 3290,
+       "priceList": "priceList160",
+       "formatPrice": 3290,
+       "priceWithoutTax": 2719.01
+      },
+      {
+       "id": "pl109_00420310",
+       "store": "109",
+       "listPrice": 3290,
+       "priceList": "priceList109",
+       "formatPrice": 3290,
+       "priceWithoutTax": 2719.01
+      },
+      {
+       "id": "pl061_00420310",
+       "store": "061",
+       "listPrice": 3125,
+       "priceList": "priceList061",
+       "formatPrice": 3125,
+       "priceWithoutTax": 2582.64
+      },
+      {
+       "id": "pl219_00420310",
+       "store": "219",
+       "listPrice": 3290,
+       "priceList": "priceList219",
+       "formatPrice": 3290,
+       "priceWithoutTax": 2719.01
+      },
+      {
+       "id": "pl091_00420310",
+       "store": "091",
+       "listPrice": 3410,
+       "priceList": "priceList091",
+       "formatPrice": 3410,
+       "priceWithoutTax": 2818.18
+      }
+     ],
+     "discounts": []
+    }
+   },
+   {
+    "value": "Gaseosa Coca Cola Sabor Original 2.25l",
+    "data": {
+     "id": "prod00012095",
+     "sku_plu": 12095,
+     "sku_display_name": "Gaseosa Coca Cola Sabor Original 2.25l",
+     "product_brand": "COCA COLA",
+     "product_main_ean": 7790895000997,
+     "product_list_price": 4800,
+     "product_format": "Litro",
+     "product_format_quantity": 2.25,
+     "product_unit_of_measure": "UNI",
+     "url": "_/R-00012095-00012095-200",
+     "product_large_image_url": null,
+     "groups": [
+      {
+       "group_id": "catv00000498",
+       "display_name": "Colas",
+       "path_list": [
+        {
+         "id": "catv00000001",
+         "display_name": "Bebidas"
+        },
+        {
+         "id": "catv00000002",
+         "display_name": "Gaseosas"
+        }
+       ]
+      }
+     ],
+     "price": [
+      {
+       "id": "pl160_00012095",
+       "store": "160",
+       "listPrice": 4800,
+       "priceList": "priceList160",
+       "formatPrice": 4800,
+       "priceWithoutTax": 3966.94
+      },
+      {
+       "id": "pl109_00012095",
+       "store": "109",
+       "listPrice": 4800,
+       "priceList": "priceList109",
+       "formatPrice": 4800,
+       "priceWithoutTax": 3966.94
+      },
+      {
+       "id": "pl061_00012095",
+       "store": "061",
+       "listPrice": 4635,
+       "priceList": "priceList061",
+       "formatPrice": 4635,
+       "priceWithoutTax": 3830.58
+      },
+      {
+       "id": "pl219_00012095",
+       "store": "219",
+       "listPrice": 4800,
+       "priceList": "priceList219",
+       "formatPrice": 4800,
+       "priceWithoutTax": 3966.94
+      },
+      {
+       "id": "pl091_00012095",
+       "store": "091",
+       "listPrice": 4920,
+       "priceList": "priceList091",
+       "formatPrice": 4920,
+       "priceWithoutTax": 4066.12
+      }
+     ],
+     "discounts": [
+      {
+       "id": "38271998",
+       "comments": "No acumulable con otras promos",
+       "takingText": "Llevando 2",
+       "discountText": "2x1",
+       "regularPrice": null,
+       "discountImage": null,
+       "discountPrice": "$2400.00",
+       "regularPriceText": "Precio Contado: $4800"
+      }
+     ]
+    }
+   },
+   {
+    "value": "Queso Cremoso LA PAULINA Xkg",
+    "data": {
+     "id": "prod00578534",
+     "sku_plu": 578534,
+     "sku_display_name": "Queso Cremoso LA PAULINA Xkg",
+     "product_brand": "LA PAULINA",
+     "product_main_ean": 2000199000001,
+     "product_list_price": 10990,
+     "product_format": "Kilo",
+     "product_format_quantity": 1,
+     "product_unit_of_measure": "KGS",
+     "url": "_/R-00578534-00578534-200",
+     "price": [
+      {
+       "id": "pl160_00578534",
+       "store": "160",
+       "listPrice": 10990,
+       "priceList": "priceList160",
+       "formatPrice": 10990,
+       "priceWithoutTax": 9082.64
+      }
+     ],
+     "discounts": [
+      {
+       "id": "38283020",
+       "comments": null,
+       "takingText": null,
+       "discountText": null,
+       "regularPrice": null,
+       "discountImage": null,
+       "discountPrice": "$10990.00",
+       "regularPriceText": "Precio Contado: $13990"
+      }
+     ]
+    }
+   }
+  ],
+  "total_num_results": 7
+ }
+}
