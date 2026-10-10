@@ -1,3 +1,5 @@
+import io
+import sys
 from datetime import UTC, datetime
 from decimal import Decimal
 
@@ -47,6 +49,17 @@ def test_demo_then_reports(run):
 
     assert "50,3" in run("changes", "--days", "3")[1]
     assert "carrefour" in run("runs", "--limit", "1")[1]
+
+
+def test_output_does_not_fail_on_a_legacy_windows_code_page(settings, monkeypatch):
+    # What Python uses on Windows when the output is redirected to a file or a pipe.
+    stdout = io.TextIOWrapper(io.BytesIO(), encoding="cp1252")
+    monkeypatch.setattr(sys, "stdout", stdout)
+
+    assert cli.main(["demo"], settings=settings) == 0
+
+    stdout.flush()
+    assert "✔ coto" in stdout.buffer.getvalue().decode("utf-8")
 
 
 def test_sql_by_name_and_unknown(run):

@@ -267,7 +267,7 @@ Sin `MONGO_URL` todo funciona igual, salvo los comandos que leen la zona raw.
 
 ## Tests y CI
 
-- **108 tests unitarios** (pytest, ~98 % de cobertura) sobre SQLite y `mongomock`: parsers de cada API,
+- **109 tests unitarios** (pytest, ~98 % de cobertura) sobre SQLite y `mongomock`: parsers de cada API,
   reglas de precios y códigos de barras, pipeline, vistas, consultas SQL, migraciones y CLI.
 - **7 tests de integración** contra MySQL 8.4 y el replica set real (`docker compose run --rm --build test`):
   carga los mismos datos en MySQL y en SQLite y verifica que todas las vistas y consultas den lo mismo,

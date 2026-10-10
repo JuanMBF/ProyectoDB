@@ -315,9 +315,18 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _ensure_utf8_output() -> None:
+    """On Windows, redirected output uses a legacy code page (cp1252) that cannot encode "✔"."""
+    for stream in (sys.stdout, sys.stderr):
+        encoding = (getattr(stream, "encoding", None) or "").lower().replace("-", "")
+        if encoding != "utf8" and hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
+
+
 def main(
     argv: Sequence[str] | None = None, settings: Settings | None = None, out: Callable[[str], None] = print
 ) -> int:
+    _ensure_utf8_output()
     args = build_parser().parse_args(argv)
     app = App(settings or Settings(), out)
     handler = getattr(app, args.command.replace("-", "_"))
