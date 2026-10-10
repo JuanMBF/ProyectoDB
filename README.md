@@ -36,7 +36,7 @@ EAN            Producto                             Súper        Precio   Regul
 | **SQLite** | Para correr el proyecto sin Docker y para los tests rápidos. Las vistas y consultas están escritas en SQL que funciona igual en MySQL y en SQLite, y un test de integración verifica que **los dos motores devuelvan exactamente los mismos resultados**. |
 
 H2 también figura en mi CV, pero es una base en memoria del mundo Java (la uso en los tests de
-[HelpDesk Pro](https://github.com/JuanMBF/Portfolio/tree/main/helpdesk-pro)); en este proyecto, que es
+[HelpDesk Pro](https://github.com/JuanMBF/Portfolio/tree/HEAD/helpdesk-pro)); en este proyecto, que es
 Python, ese papel lo cumple SQLite.
 
 ## Arquitectura
@@ -322,3 +322,15 @@ sin conexión.
 ├── Dockerfile
 └── docker-compose.yml
 ```
+
+## Autor
+
+**Juan Barros**: estudiante de la Tecnicatura en Desarrollo de Software (UADE), con experiencia en soporte
+técnico y mesa de ayuda.
+
+- GitHub: [@JuanMBF](https://github.com/JuanMBF)
+- Más proyectos: [Portfolio](https://github.com/JuanMBF/Portfolio) (HelpDesk Pro en Java + React, Mongo
+  Replica Lab e IT Support Toolkit) y [HelpDesk Pro en Python](https://github.com/JuanMBF/python)
+  (FastAPI + Streamlit).
+
+Proyecto bajo licencia [MIT](LICENSE).
