@@ -59,6 +59,17 @@ def test_compare_by_name_and_without_filter(loaded):
     assert reports.compare(loaded, search="queso") == []
 
 
+def test_compare_takes_the_search_text_literally(loaded):
+    # "%" and "_" are LIKE wildcards: unescaped, "5%" matched every product with a 5 in its name.
+    assert {r["product"] for r in reports.compare(loaded, search="3%")} == {
+        r["product"] for r in reports.compare(loaded, ean=LECHE)
+    }
+    assert reports.compare(loaded, search="5%") == []
+    assert reports.compare(loaded, search="%") == reports.compare(loaded, search="3%")
+    assert reports.compare(loaded, search="_") == []
+    assert reports.compare(loaded, search="!") == []
+
+
 def test_history_lists_every_capture(loaded):
     rows = reports.history(loaded, LECHE)
 

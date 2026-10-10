@@ -44,6 +44,14 @@ def _rows(session: Session, sql: str, **params: Any) -> list[Row]:
     return [dict(row._mapping) for row in session.execute(statement, params)]
 
 
+def _like_literal(value: str) -> str:
+    """Escapes the LIKE wildcards, so "3%" finds the products with "3%" and not everything with a 3.
+
+    The escape character is "!" because a backslash literal is written differently in MySQL and SQLite.
+    """
+    return value.replace("!", "!!").replace("%", "!%").replace("_", "!_")
+
+
 def compare(
     session: Session, search: str | None = None, ean: str | None = None, limit: int = 60
 ) -> list[Row]:
@@ -59,9 +67,9 @@ def compare(
     if ean:
         return _rows(session, sql.format(where="WHERE ean = :ean"), ean=ean, limit=limit)
     if search:
-        pattern = f"%{search.lower()}%"
+        where = "WHERE LOWER(product) LIKE :pattern ESCAPE '!'"
         return _rows(
-            session, sql.format(where="WHERE LOWER(product) LIKE :pattern"), pattern=pattern, limit=limit
+            session, sql.format(where=where), pattern=f"%{_like_literal(search.lower())}%", limit=limit
         )
     return _rows(session, sql.format(where=""), limit=limit)
 
