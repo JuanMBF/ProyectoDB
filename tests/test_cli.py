@@ -5,8 +5,10 @@ from decimal import Decimal
 
 import mongomock
 import pytest
+from sqlalchemy.exc import OperationalError
 
 from preciosdb import cli
+from preciosdb.config import Settings
 from preciosdb.raw_store import MongoRawStore
 from preciosdb.samples import SampleClient
 
@@ -60,6 +62,27 @@ def test_output_does_not_fail_on_a_legacy_windows_code_page(settings, monkeypatc
 
     stdout.flush()
     assert "✔ coto" in stdout.buffer.getvalue().decode("utf-8")
+
+
+@pytest.mark.parametrize("argv", [["demo"], ["compare", "leche"], ["changes"], ["runs"], ["sql", "01"]])
+def test_commands_before_migrate_say_what_is_missing(tmp_path, argv):
+    # They used to end in a SQLAlchemy traceback ("no such table").
+    settings = Settings(_env_file=None, database_url=f"sqlite:///{tmp_path / 'empty.db'}", mongo_url="")
+    lines: list[str] = []
+
+    assert cli.main(argv, settings=settings, out=lines.append) == 2
+    assert "python -m preciosdb migrate" in lines[-1]
+
+    assert cli.main(["migrate"], settings=settings, out=lines.append) == 0
+    assert cli.main(argv, settings=settings, out=lines.append) == 0
+
+
+def test_other_database_errors_are_not_hidden(run, tmp_path):
+    query = tmp_path / "rota.sql"
+    query.write_text("SELECT * FROM tabla_que_no_existe", encoding="utf-8")
+
+    with pytest.raises(OperationalError):
+        run("sql", str(query))
 
 
 def test_sql_by_name_and_unknown(run):

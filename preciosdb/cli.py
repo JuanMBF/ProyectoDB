@@ -12,6 +12,8 @@ from typing import Any
 
 from alembic import command
 from alembic.config import Config
+from sqlalchemy import inspect
+from sqlalchemy.exc import OperationalError, ProgrammingError
 from sqlalchemy.orm import Session
 
 from preciosdb import pipeline, reports
@@ -91,6 +93,9 @@ class App:
 
     def session(self) -> Session:
         return self.sessions()
+
+    def is_migrated(self) -> bool:
+        return inspect(self.engine).has_table("alembic_version")
 
     def close(self) -> None:
         self.engine.dispose()
@@ -332,6 +337,11 @@ def main(
     handler = getattr(app, args.command.replace("-", "_"))
     try:
         return handler(args)
+    except (OperationalError, ProgrammingError):  # a missing table is one in SQLite and the other in MySQL
+        if args.command == "migrate" or app.is_migrated():
+            raise
+        out("La base de datos todavía no tiene las tablas. Corré primero: python -m preciosdb migrate")
+        return 2
     finally:
         app.close()
 
