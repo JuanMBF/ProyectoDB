@@ -204,12 +204,14 @@ class App:
 
     def sql(self, args: argparse.Namespace) -> int:
         path = Path(args.file)
-        if not path.exists():
-            matches = sorted(reports.SQL_DIR.glob(f"{args.file}*.sql"))
+        if not path.is_file():
+            # Compared by name: what the user typed is not a glob pattern (it can be a path, or have "[").
+            available = sorted(reports.SQL_DIR.glob("*.sql"))
+            matches = [query for query in available if args.file and query.name.startswith(args.file)]
             if not matches:
                 self.out(f"No encontré {args.file}. Consultas disponibles:")
-                for available in sorted(reports.SQL_DIR.glob("*.sql")):
-                    self.out(f"  {available.stem}")
+                for query in available:
+                    self.out(f"  {query.stem}")
                 return 2
             path = matches[0]
         with self.session() as session:

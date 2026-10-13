@@ -96,6 +96,17 @@ def test_sql_by_name_and_unknown(run):
     assert "01_canasta_comparable" in out
 
 
+def test_sql_with_a_path_that_is_not_a_query_file(run, tmp_path):
+    # An absolute path with a typo used to end in a pathlib traceback (NotImplementedError: "Non-relative
+    # patterns are unsupported"), and a folder in a PermissionError / IsADirectoryError.
+    for target in (tmp_path / "no_existe.sql", tmp_path):
+        code, out = run("sql", str(target))
+
+        assert code == 2
+        assert f"No encontré {target}" in out
+        assert "01_canasta_comparable" in out
+
+
 def test_scrape_needs_terms(run):
     assert run("scrape")[0] == 2
 
