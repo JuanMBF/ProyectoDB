@@ -60,6 +60,8 @@ def test_to_decimal():
         ("2000199000001", None),  # store-only code (weighed cheese at Coto)
         ("0212345678909", None),  # restricted prefix 02 (valid check digit)
         ("12345", None),
+        ("9638507²", None),  # str.isdigit() accepts superscripts, but int() does not
+        ("７７９０７４２３６３００８", None),  # fullwidth digits: not a barcode a scanner reads
         ("", None),
         (None, None),
     ],

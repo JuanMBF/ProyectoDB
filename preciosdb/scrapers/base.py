@@ -155,7 +155,8 @@ def comparable_ean(value: Any) -> str | None:
     those are assigned by each store (weighed cheese, meat...) and mean different things in each chain.
     """
     code = clean_text(value)
-    if code is None or not code.isdigit() or len(code) not in (8, 12, 13, 14):
+    # isascii(): str.isdigit() also accepts "²" or fullwidth digits, which are not barcodes.
+    if code is None or not (code.isascii() and code.isdigit()) or len(code) not in (8, 12, 13, 14):
         return None
     if not gtin_check_digit_ok(code):
         return None
