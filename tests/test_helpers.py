@@ -56,6 +56,13 @@ def test_to_decimal():
     assert to_decimal(None) is None
 
 
+def test_to_decimal_rejects_quantities_that_do_not_fit_the_unit_quantity_column():
+    assert to_decimal("9999999.999") == Decimal("9999999.999")
+    assert to_decimal(1e8) is None  # MySQL rejected it in DECIMAL(10, 3)
+    assert to_decimal(1e30) is None  # SQLite stored it, but reading the listing back raised
+    assert to_decimal(-1e30) is None
+
+
 @pytest.mark.parametrize(
     ("code", "expected"),
     [

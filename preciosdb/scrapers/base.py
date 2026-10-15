@@ -18,6 +18,9 @@ CENTS = Decimal("0.01")
 # and rounding it to cents can even raise InvalidOperation (more digits than the decimal context holds).
 MAX_MONEY = Decimal("9999999999.99")
 
+# Same for the DECIMAL(10, 3) unit quantity column.
+MAX_QUANTITY = Decimal("9999999.999")
+
 # A "regular price" more than 3x the price paid is a unit/format error in the source, not a discount:
 # supermarkets do not sell at -66 %. In that case we assume there is no discount instead of inventing one.
 MAX_REGULAR_TO_PRICE_RATIO = 3
@@ -103,7 +106,9 @@ def to_decimal(value: Any) -> Decimal | None:
         number = Decimal(str(value))
     except InvalidOperation:
         return None
-    return number if number.is_finite() else None
+    if not number.is_finite() or abs(number) > MAX_QUANTITY:
+        return None
+    return number
 
 
 _MONEY = re.compile(r"\$?\s*(\d[\d.,]*)")

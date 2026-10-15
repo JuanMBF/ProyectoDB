@@ -114,6 +114,26 @@ def test_failure_marks_the_run_and_keeps_pages_already_saved(session):
     assert session.get(ScrapeRun, summary.run_id).finished_at == DAY1
 
 
+def test_absurd_unit_quantity_is_dropped_instead_of_breaking_the_listing(session):
+    payload = [
+        {
+            "productName": "Yerba",
+            "items": [
+                {"itemId": "7", "unitMultiplier": 1e30, "sellers": [{"commertialOffer": {"Price": 5150}}]}
+            ],
+        }
+    ]
+    dia = build_scrapers(FakeClient(payload), Settings(_env_file=None))["dia"]
+
+    summary = pipeline.scrape(session, dia, NullRawStore(), ["yerba"], clock=lambda: DAY1)
+
+    assert summary.status is RunStatus.OK
+    session.expire_all()
+    listing = session.scalar(select(Listing))  # used to raise InvalidOperation when read back
+    assert listing.unit_quantity is None
+    assert session.scalar(select(PriceSnapshot.price)) == Decimal("5150.00")
+
+
 def test_scrape_by_ean(session):
     summary = pipeline.scrape(
         session, scrapers()["carrefour"], NullRawStore(), eans=["7790742363008"], clock=lambda: DAY1
