@@ -107,6 +107,25 @@ def test_sql_with_a_path_that_is_not_a_query_file(run, tmp_path):
         assert "01_canasta_comparable" in out
 
 
+@pytest.mark.parametrize(
+    ("argv", "message"),
+    [
+        (["changes", "--days", "1000000"], "como mucho 36500"),  # was an OverflowError traceback
+        (["changes", "--days", "-3"], "mayor que cero"),  # silently showed "(sin resultados)"
+        (["compare", "--limit", "-1"], "mayor que cero"),  # no limit in SQLite, LIMIT -1 error in MySQL
+        (["runs", "--limit", "0"], "mayor que cero"),
+        (["scrape", "--term", "leche", "--max", "0"], "mayor que cero"),  # ran with no requests at all
+        (["changes", "--days", "una semana"], "no es un número entero"),
+    ],
+)
+def test_numeric_options_out_of_range_are_rejected(run, capsys, argv, message):
+    with pytest.raises(SystemExit) as exit_info:
+        run(*argv)
+
+    assert exit_info.value.code == 2
+    assert message in capsys.readouterr().err
+
+
 def test_scrape_needs_terms(run):
     assert run("scrape")[0] == 2
 

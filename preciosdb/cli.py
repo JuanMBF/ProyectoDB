@@ -278,6 +278,27 @@ class App:
         self.out(line)
 
 
+# 100 years back is plenty, and much further the date no longer fits in a datetime (OverflowError).
+MAX_DAYS = 36_500
+
+
+def positive_int(maximum: int | None = None) -> Callable[[str], int]:
+    """argparse type: a whole number from 1 up to `maximum`, checked before touching the database."""
+
+    def parse(text: str) -> int:
+        try:
+            value = int(text)
+        except ValueError:
+            raise argparse.ArgumentTypeError(f"'{text}' no es un número entero") from None
+        if value < 1:
+            raise argparse.ArgumentTypeError(f"tiene que ser mayor que cero (se recibió {value})")
+        if maximum is not None and value > maximum:
+            raise argparse.ArgumentTypeError(f"tiene que ser como mucho {maximum} (se recibió {value})")
+        return value
+
+    return parse
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="preciosdb", description="Precios de supermercados argentinos: Coto, Día y Carrefour."
@@ -290,27 +311,29 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--super", nargs="+", choices=SUPERMARKETS, default=list(SUPERMARKETS))
     p.add_argument("--term", action="append", default=[], help="texto a buscar (se puede repetir)")
     p.add_argument("--ean", action="append", default=[], help="código de barras a buscar (se puede repetir)")
-    p.add_argument("--max", type=int, default=100, help="máximo de productos por búsqueda (default 100)")
+    p.add_argument(
+        "--max", type=positive_int(), default=100, help="máximo de productos por búsqueda (default 100)"
+    )
 
     sub.add_parser("demo", help="carga datos de ejemplo sin conexión (dos capturas, un día de diferencia)")
 
     p = sub.add_parser("compare", help="compara el mismo producto entre supermercados")
     p.add_argument("search", nargs="?", help="parte del nombre del producto")
     p.add_argument("--ean")
-    p.add_argument("--limit", type=int, default=60)
+    p.add_argument("--limit", type=positive_int(), default=60)
 
     p = sub.add_parser("history", help="historial de precios de un código de barras")
     p.add_argument("ean")
 
     p = sub.add_parser("changes", help="cambios de precio recientes")
-    p.add_argument("--days", type=int, default=7)
-    p.add_argument("--limit", type=int, default=30)
+    p.add_argument("--days", type=positive_int(MAX_DAYS), default=7)
+    p.add_argument("--limit", type=positive_int(), default=30)
 
     p = sub.add_parser("sql", help="ejecuta una consulta de sql/consultas (por nombre o ruta)")
     p.add_argument("file", help="ej.: 01_canasta_comparable")
 
     p = sub.add_parser("runs", help="últimas corridas de scraping")
-    p.add_argument("--limit", type=int, default=15)
+    p.add_argument("--limit", type=positive_int(), default=15)
 
     p = sub.add_parser("reprocess", help="reconstruye los precios de una corrida desde MongoDB")
     p.add_argument("run_id", type=int)
