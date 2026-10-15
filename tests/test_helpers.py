@@ -42,6 +42,14 @@ def test_to_money_rounds_to_cents_and_rejects_garbage():
     assert to_money(float("nan")) is None
 
 
+def test_to_money_rejects_amounts_that_do_not_fit_the_price_columns():
+    assert to_money("9999999999.99") == Decimal("9999999999.99")
+    assert to_money("1e20") is None  # rounded fine, but MySQL rejected it in DECIMAL(12, 2)
+    assert to_money(1e30) is None  # rounding to cents raised InvalidOperation
+    assert to_money(-1e30) is None
+    assert parse_money("$ 99999999999999999999999999999") is None
+
+
 def test_to_decimal():
     assert to_decimal(1.5) == Decimal("1.5")
     assert to_decimal("x") is None

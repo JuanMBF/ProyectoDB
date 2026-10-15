@@ -79,6 +79,19 @@ def test_default_seller_and_link_fallback():
     assert yerba.category is None
 
 
+def test_absurd_price_is_dropped_instead_of_breaking_the_page():
+    def product(item_id, price):
+        offer = {"commertialOffer": {"Price": price}}
+        return {"productName": item_id, "items": [{"itemId": item_id, "sellers": [offer]}]}
+
+    payload = [product("1", 1e30), product("2", 5150)]
+    broken, yerba = VtexScraper(FakeClient(), "dia", "Día", DIA).parse(payload)
+
+    assert broken.price is None
+    assert not broken.is_available
+    assert yerba.price == Decimal("5150.00")
+
+
 def test_parse_ignores_unexpected_payloads():
     scraper = VtexScraper(FakeClient(), "dia", "Día", DIA)
     assert scraper.parse({"error": "blocked"}) == []

@@ -14,6 +14,10 @@ from preciosdb.http import HttpClient
 
 CENTS = Decimal("0.01")
 
+# Largest amount that fits the DECIMAL(12, 2) price columns. A bigger number is garbage in the source,
+# and rounding it to cents can even raise InvalidOperation (more digits than the decimal context holds).
+MAX_MONEY = Decimal("9999999999.99")
+
 # A "regular price" more than 3x the price paid is a unit/format error in the source, not a discount:
 # supermarkets do not sell at -66 %. In that case we assume there is no discount instead of inventing one.
 MAX_REGULAR_TO_PRICE_RATIO = 3
@@ -87,7 +91,7 @@ def to_money(value: Any) -> Decimal | None:
         amount = Decimal(str(value))
     except InvalidOperation:
         return None
-    if not amount.is_finite():
+    if not amount.is_finite() or abs(amount) > MAX_MONEY:
         return None
     return amount.quantize(CENTS, rounding=ROUND_HALF_UP)
 
