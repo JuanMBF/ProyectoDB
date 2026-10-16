@@ -116,6 +116,8 @@ def test_sql_with_a_path_that_is_not_a_query_file(run, tmp_path):
         (["runs", "--limit", "0"], "mayor que cero"),
         (["scrape", "--term", "leche", "--max", "0"], "mayor que cero"),  # ran with no requests at all
         (["changes", "--days", "una semana"], "no es un número entero"),
+        (["reprocess", "99999999999999999999"], "como mucho 2147483647"),  # was an OverflowError traceback
+        (["reprocess", "0"], "mayor que cero"),
     ],
 )
 def test_numeric_options_out_of_range_are_rejected(run, capsys, argv, message):

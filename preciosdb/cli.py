@@ -281,6 +281,9 @@ class App:
 # 100 years back is plenty, and much further the date no longer fits in a datetime (OverflowError).
 MAX_DAYS = 36_500
 
+# scrape_runs.id is an INT: a bigger id cannot exist, and SQLite cannot even bind it (OverflowError).
+MAX_RUN_ID = 2_147_483_647
+
 
 def positive_int(maximum: int | None = None) -> Callable[[str], int]:
     """argparse type: a whole number from 1 up to `maximum`, checked before touching the database."""
@@ -336,7 +339,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--limit", type=positive_int(), default=15)
 
     p = sub.add_parser("reprocess", help="reconstruye los precios de una corrida desde MongoDB")
-    p.add_argument("run_id", type=int)
+    p.add_argument("run_id", type=positive_int(MAX_RUN_ID))
 
     p = sub.add_parser("branches", help="precio de un producto en cada sucursal de Coto (MongoDB)")
     p.add_argument("ean")
