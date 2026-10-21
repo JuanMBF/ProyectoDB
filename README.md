@@ -25,7 +25,7 @@ EAN            Producto                             Súper        Precio   Regul
 
 ---
 
-## Bases de datos que usa (las de mi CV)
+## Bases de datos que usa
 
 | Tecnología | Para qué se usa acá |
 |---|---|
@@ -34,10 +34,6 @@ EAN            Producto                             Súper        Precio   Regul
 | **MongoDB 7 (replica set)** | Zona *raw*: cada respuesta de las APIs se guarda tal cual en un replica set de 3 nodos, con `writeConcern: majority`, índices y *aggregation pipelines*. Se prueba la caída del primario en CI. |
 | **SQLAlchemy 2.0 + Alembic** | ORM tipado y migraciones versionadas (incluidas las vistas). El CI verifica con `alembic check` que las migraciones coincidan con los modelos. |
 | **SQLite** | Para correr el proyecto sin Docker y para los tests rápidos. Las vistas y consultas están escritas en SQL que funciona igual en MySQL y en SQLite, y un test de integración verifica que **los dos motores devuelvan exactamente los mismos resultados**. |
-
-H2 también figura en mi CV, pero es una base en memoria del mundo Java (la uso en los tests de
-[HelpDesk Pro](https://github.com/JuanMBF/Portfolio/tree/HEAD/helpdesk-pro)); en este proyecto, que es
-Python, ese papel lo cumple SQLite.
 
 ## Arquitectura
 
