@@ -284,6 +284,10 @@ MAX_DAYS = 36_500
 # scrape_runs.id is an INT: a bigger id cannot exist, and SQLite cannot even bind it (OverflowError).
 MAX_RUN_ID = 2_147_483_647
 
+# Rows of a --limit listing: more is unreadable in a terminal, and a huge LIMIT cannot even be bound
+# by SQLite (OverflowError).
+MAX_LIMIT = 10_000
+
 
 def positive_int(maximum: int | None = None) -> Callable[[str], int]:
     """argparse type: a whole number from 1 up to `maximum`, checked before touching the database."""
@@ -323,20 +327,20 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("compare", help="compara el mismo producto entre supermercados")
     p.add_argument("search", nargs="?", help="parte del nombre del producto")
     p.add_argument("--ean")
-    p.add_argument("--limit", type=positive_int(), default=60)
+    p.add_argument("--limit", type=positive_int(MAX_LIMIT), default=60)
 
     p = sub.add_parser("history", help="historial de precios de un código de barras")
     p.add_argument("ean")
 
     p = sub.add_parser("changes", help="cambios de precio recientes")
     p.add_argument("--days", type=positive_int(MAX_DAYS), default=7)
-    p.add_argument("--limit", type=positive_int(), default=30)
+    p.add_argument("--limit", type=positive_int(MAX_LIMIT), default=30)
 
     p = sub.add_parser("sql", help="ejecuta una consulta de sql/consultas (por nombre o ruta)")
     p.add_argument("file", help="ej.: 01_canasta_comparable")
 
     p = sub.add_parser("runs", help="últimas corridas de scraping")
-    p.add_argument("--limit", type=positive_int(), default=15)
+    p.add_argument("--limit", type=positive_int(MAX_LIMIT), default=15)
 
     p = sub.add_parser("reprocess", help="reconstruye los precios de una corrida desde MongoDB")
     p.add_argument("run_id", type=positive_int(MAX_RUN_ID))

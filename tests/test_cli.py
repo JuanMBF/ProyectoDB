@@ -114,6 +114,9 @@ def test_sql_with_a_path_that_is_not_a_query_file(run, tmp_path):
         (["changes", "--days", "-3"], "mayor que cero"),  # silently showed "(sin resultados)"
         (["compare", "--limit", "-1"], "mayor que cero"),  # no limit in SQLite, LIMIT -1 error in MySQL
         (["runs", "--limit", "0"], "mayor que cero"),
+        (["compare", "--limit", "99999999999999999999"], "como mucho 10000"),  # was an OverflowError
+        (["changes", "--limit", "99999999999999999999"], "como mucho 10000"),
+        (["runs", "--limit", "99999999999999999999"], "como mucho 10000"),
         (["scrape", "--term", "leche", "--max", "0"], "mayor que cero"),  # ran with no requests at all
         (["changes", "--days", "una semana"], "no es un número entero"),
         (["reprocess", "99999999999999999999"], "como mucho 2147483647"),  # was an OverflowError traceback
