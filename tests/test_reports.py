@@ -6,7 +6,9 @@ from decimal import Decimal
 import pytest
 
 from preciosdb import reports
+from preciosdb.db.repository import PriceRepository
 from preciosdb.raw_store import NullRawStore
+from preciosdb.scrapers.base import ScrapedProduct
 from tests.conftest import DAY1, DAY2
 from tests.test_pipeline import load_both_days
 
@@ -83,6 +85,34 @@ def test_history_lists_every_capture(loaded):
 def test_history_also_finds_store_only_codes(loaded):
     rows = reports.history(loaded, "2000199000001")
     assert [r["price"] for r in rows] == [Decimal("10990.00"), Decimal("11490.00")]
+
+
+UPC_A = "036000291452"  # the same barcode as EAN-13 "0036000291452"
+
+
+@pytest.fixture
+def upc_in_two_chains(session):
+    """One chain publishes the 12-digit UPC-A and another the EAN-13 with the leading zero."""
+    repo = PriceRepository(session)
+    for code, ean, price in (("dia", UPC_A, "100"), ("carrefour", "0" + UPC_A, "120")):
+        run = repo.start_run(repo.supermarket(code, code, f"https://{code}.example"), ["papel"], DAY1)
+        product = ScrapedProduct(sku=f"{code}-1", name="Papel higiénico", ean=ean, price=Decimal(price))
+        repo.save_page(run, [product], DAY1)
+    session.commit()
+    return session
+
+
+@pytest.mark.parametrize("ean", [UPC_A, "0" + UPC_A, f" {UPC_A} "])
+def test_compare_and_history_accept_either_form_of_the_barcode(upc_in_two_chains, ean):
+    # products.ean keeps the 13-digit form, so a UPC-A typed as printed on the package found nothing.
+    assert prices(reports.compare(upc_in_two_chains, ean=ean)) == {
+        "dia": Decimal("100.00"),
+        "carrefour": Decimal("120.00"),
+    }
+    assert prices(reports.history(upc_in_two_chains, ean)) == {
+        "dia": Decimal("100.00"),
+        "carrefour": Decimal("120.00"),
+    }
 
 
 def test_changes_since(loaded):

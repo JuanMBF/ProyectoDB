@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 
 from preciosdb.db.models import ScrapeRun
 from preciosdb.db.types import UTCDateTime, money
+from preciosdb.scrapers.base import comparable_ean
 
 Row = dict[str, Any]
 
@@ -52,6 +53,11 @@ def _like_literal(value: str) -> str:
     return value.replace("!", "!!").replace("%", "!%").replace("_", "!_")
 
 
+def _product_ean(ean: str) -> str:
+    """The barcode as products.ean stores it: a 12-digit UPC-A is saved as EAN-13 with a leading zero."""
+    return comparable_ean(ean) or ean.strip()
+
+
 def compare(
     session: Session, search: str | None = None, ean: str | None = None, limit: int = 60
 ) -> list[Row]:
@@ -65,7 +71,7 @@ def compare(
         LIMIT :limit
     """
     if ean:
-        return _rows(session, sql.format(where="WHERE ean = :ean"), ean=ean, limit=limit)
+        return _rows(session, sql.format(where="WHERE ean = :ean"), ean=_product_ean(ean), limit=limit)
     if search:
         where = "WHERE LOWER(product) LIKE :pattern ESCAPE '!'"
         return _rows(
@@ -83,10 +89,10 @@ def history(session: Session, ean: str) -> list[Row]:
         JOIN listings l ON l.id = s.listing_id
         JOIN supermarkets sm ON sm.id = l.supermarket_id
         LEFT JOIN products p ON p.id = l.product_id
-        WHERE l.ean = :ean OR p.ean = :ean
+        WHERE l.ean = :ean OR p.ean = :product_ean
         ORDER BY s.captured_at, sm.code
     """
-    return _rows(session, sql, ean=ean)
+    return _rows(session, sql, ean=ean.strip(), product_ean=_product_ean(ean))
 
 
 def changes(session: Session, since: datetime, limit: int = 30) -> list[Row]:
