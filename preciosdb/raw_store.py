@@ -23,6 +23,9 @@ from preciosdb.scrapers.base import Page
 
 COLLECTION = "raw_pages"
 
+# BSON integers are 64-bit: pymongo cannot encode a bigger one (OverflowError).
+MAX_BSON_INT = 2**63 - 1
+
 
 class RawStore(Protocol):
     def save_page(self, run_id: int, page: Page, fetched_at: datetime) -> str | None: ...
@@ -124,8 +127,10 @@ class MongoRawStore:
 
         Coto publishes one price per branch (`data.price[]`); this data only lives in the raw zone.
         """
+        ean = ean.strip()
         codes: list[Any] = [ean]
-        if ean.isdigit():
+        # isascii(): str.isdigit() also accepts "²" or fullwidth digits, which int() rejects.
+        if ean.isascii() and ean.isdigit() and int(ean) <= MAX_BSON_INT:
             codes.append(int(ean))  # Coto sends the EAN as a number
         pipeline: list[dict[str, Any]] = [
             {"$match": {"supermarket": "coto"}},

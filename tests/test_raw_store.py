@@ -52,6 +52,28 @@ def test_coto_branch_prices_reads_the_latest_capture(raw_store):
     assert raw_store.coto_branch_prices("0000000000000") == []
 
 
+def test_coto_branch_prices_ignores_spaces_around_the_ean(raw_store):
+    raw_store.save_page(1, page(payload=load("day1", "coto")), DAY1)
+
+    assert len(raw_store.coto_branch_prices(" 7790895000997 ")) == 5
+
+
+def test_coto_branch_prices_with_codes_that_are_not_a_number(raw_store, monkeypatch):
+    raw_store.save_page(1, page(payload=load("day1", "coto")), DAY1)
+    pipelines = []
+    aggregate = raw_store.collection.aggregate
+    monkeypatch.setattr(
+        raw_store.collection, "aggregate", lambda pipeline: pipelines.append(pipeline) or aggregate(pipeline)
+    )
+
+    # "²" passes str.isdigit() but not int(); 30 digits do not fit a BSON int (OverflowError in pymongo).
+    assert raw_store.coto_branch_prices("²") == []
+    assert raw_store.coto_branch_prices("9" * 30) == []
+
+    codes = [stage["$match"]["data.product_main_ean"]["$in"] for p in pipelines for stage in p[4:5]]
+    assert codes == [["²"], ["9" * 30]]
+
+
 def test_stats_per_supermarket(raw_store):
     raw_store.save_page(1, page("leche", payload=load("day1", "coto")), DAY1)
     raw_store.save_page(1, page("yerba", payload=load("day1", "coto")), DAY1)
