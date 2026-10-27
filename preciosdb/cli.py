@@ -215,7 +215,12 @@ class App:
                 return 2
             path = matches[0]
         with self.session() as session:
-            self.out(render_table(reports.run_sql_file(session, path)))
+            try:
+                rows = reports.run_sql_file(session, path)
+            except UnicodeDecodeError:
+                self.out(f"{path} no está en UTF-8 (¿guardado como ANSI?): volvé a guardarlo en UTF-8.")
+                return 2
+        self.out(render_table(rows))
         return 0
 
     def runs(self, args: argparse.Namespace) -> int:

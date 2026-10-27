@@ -107,6 +107,17 @@ def test_sql_with_a_path_that_is_not_a_query_file(run, tmp_path):
         assert "01_canasta_comparable" in out
 
 
+def test_sql_with_a_file_saved_as_ansi(run, tmp_path):
+    # What Notepad used to write by default on Windows (cp1252): it ended in a UnicodeDecodeError traceback.
+    query = tmp_path / "ansi.sql"
+    query.write_bytes("SELECT 'año' AS período".encode("cp1252"))
+
+    code, out = run("sql", str(query))
+
+    assert code == 2
+    assert f"{query} no está en UTF-8" in out
+
+
 @pytest.mark.parametrize(
     ("argv", "message"),
     [
