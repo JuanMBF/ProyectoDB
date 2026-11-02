@@ -13,7 +13,7 @@ from typing import Any
 from alembic import command
 from alembic.config import Config
 from sqlalchemy import inspect
-from sqlalchemy.exc import OperationalError, ProgrammingError
+from sqlalchemy.exc import OperationalError, ProgrammingError, ResourceClosedError
 from sqlalchemy.orm import Session
 
 from preciosdb import pipeline, reports
@@ -219,6 +219,9 @@ class App:
                 rows = reports.run_sql_file(session, path)
             except UnicodeDecodeError:
                 self.out(f"{path} no está en UTF-8 (¿guardado como ANSI?): volvé a guardarlo en UTF-8.")
+                return 2
+            except ResourceClosedError:  # an empty file, only comments, or an INSERT/DELETE (never committed)
+                self.out(f"{path} no devolvió filas: este comando solo ejecuta consultas SELECT.")
                 return 2
         self.out(render_table(rows))
         return 0

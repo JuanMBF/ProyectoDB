@@ -118,6 +118,20 @@ def test_sql_with_a_file_saved_as_ansi(run, tmp_path):
     assert f"{query} no está en UTF-8" in out
 
 
+@pytest.mark.parametrize("text", ["", "-- solo un comentario\n", ";", "DELETE FROM price_snapshots"])
+def test_sql_with_a_file_that_returns_no_rows(run, tmp_path, text):
+    # They used to end in a SQLAlchemy traceback ("This result object does not return rows").
+    run("demo")
+    query = tmp_path / "sin_filas.sql"
+    query.write_text(text, encoding="utf-8")
+
+    code, out = run("sql", str(query))
+
+    assert code == 2
+    assert f"{query} no devolvió filas" in out
+    assert "1.939,00" in run("history", "7790742363008")[1]  # a DELETE does not touch the data
+
+
 @pytest.mark.parametrize(
     ("argv", "message"),
     [
