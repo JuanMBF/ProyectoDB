@@ -72,6 +72,19 @@ def test_compare_takes_the_search_text_literally(loaded):
     assert reports.compare(loaded, search="!") == []
 
 
+@pytest.mark.parametrize("search", ["azúcar", "AZÚCAR", "Azúcar"])
+def test_compare_finds_accented_capitals_whatever_the_case_typed(session, search):
+    # SQLite's LOWER() only knows ASCII: "azúcar" did not find "AZÚCAR", the way Coto writes many names.
+    repo = PriceRepository(session)
+    for code, name in (("coto", "AZÚCAR LEDESMA 1 KG"), ("dia", "Azúcar Ledesma 1 Kg")):
+        run = repo.start_run(repo.supermarket(code, code, f"https://{code}.example"), ["azúcar"], DAY1)
+        product = ScrapedProduct(sku=f"{code}-1", name=name, ean=LECHE, price=Decimal("1500"))
+        repo.save_page(run, [product], DAY1)
+    session.commit()
+
+    assert set(prices(reports.compare(session, search=search))) == {"coto", "dia"}
+
+
 def test_history_lists_every_capture(loaded):
     rows = reports.history(loaded, LECHE)
 
